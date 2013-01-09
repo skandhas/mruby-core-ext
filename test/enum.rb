@@ -22,3 +22,8 @@ assert("Enumrable#group_by") do
   r[1] == [1, 4] and
   r[2] == [2, 5]
 end
+
+assert("Enumrable#take") do
+ a = [1, 2, 3, 4, 5, 0]
+ a.take(3) == [1, 2, 3]
+end

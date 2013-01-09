@@ -99,4 +99,26 @@ module Enumerable
     end
     h
   end
+
+  ##
+  # call-seq:
+  #    enum.take(n)               -> array
+  #
+  # Returns first n elements from <i>enum</i>.
+  #
+  #    a = [1, 2, 3, 4, 5, 0]
+  #    a.take(3)             #=> [1, 2, 3]
+
+  def take(n)
+    n = n.to_int
+    raise ArgumentError, "attempt to take negative size: #{n}" if n < 0
+
+    ary = []
+    self.each do |e|
+      break if ary.size >= n
+      ary << e
+    end
+    ary
+  end
+
 end
