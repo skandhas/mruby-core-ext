@@ -13,4 +13,19 @@ class Hash
   def delete_if(&block)
     self.reject!(&block) || self
   end  
+
+  ##
+  # call-seq:
+  #    hsh.keep_if {| key, value | block }  -> hsh
+  #    hsh.keep_if                          -> an_enumerator
+  #
+  # Deletes every key-value pair from <i>hsh</i> for which <i>block</i>
+  # evaluates to false.
+
+  def keep_if
+    keys = []
+    self.each_key {|k| keys << k unless yield(k, self[k]) }
+    keys.each{|k| self.delete(k) }
+    self
+  end
 end
