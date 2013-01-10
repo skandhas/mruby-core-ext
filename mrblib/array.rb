@@ -100,7 +100,7 @@ class Array
   #    a.keep_if {|v| v =~ /[aeiou]/}   #=> ["a", "e"]
 
   def keep_if(&block)
-    self.select!(&block) || self
+    self.select!(&block) || self.clear
   end
 end
 
