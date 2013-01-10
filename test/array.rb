@@ -1,3 +1,8 @@
+assert("Array::try_convert") do
+  Array.try_convert([1]) == [1] and
+  Array.try_convert("1").nil?
+end
+
 assert("Array#reject!") do
   a = [1, 2, 3, 4]
   a.reject!{|x| x > 2 } == [1, 2] and 
