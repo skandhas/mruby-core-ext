@@ -70,7 +70,7 @@ module Enumerable
     self.each do |e|
       ary << e
       if ary.size == n
-        yield ary;
+        yield ary
         ary = []
       end
     end
