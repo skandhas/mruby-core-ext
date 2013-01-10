@@ -68,10 +68,43 @@ mrb_core_ex_ary_assoc(mrb_state *mrb, mrb_value ary)
   return mrb_nil_value();
 }
 
+/*
+ *  call-seq:
+ *     ary.rassoc(obj) -> new_ary or nil
+ *
+ *  Searches through the array whose elements are also arrays. Compares
+ *  _obj_ with the second element of each contained array using
+ *  <code>==</code>. Returns the first contained array that matches. See
+ *  also <code>Array#assoc</code>.
+ *
+ *     a = [ [ 1, "one"], [2, "two"], [3, "three"], ["ii", "two"] ]
+ *     a.rassoc("two")    #=> [2, "two"]
+ *     a.rassoc("four")   #=> nil
+ */
+
+static mrb_value
+mrb_core_ex_ary_rassoc(mrb_state *mrb, mrb_value ary)
+{
+  long i;
+  mrb_value v, value;
+
+  mrb_get_args(mrb, "o", &value);
+
+  for (i = 0; i < RARRAY_LEN(ary); ++i) {
+    v = RARRAY_PTR(ary)[i];
+    if (mrb_type(v) == MRB_TT_ARRAY &&
+        RARRAY_LEN(v) > 1 &&
+        mrb_equal(mrb, RARRAY_PTR(v)[1], value))
+      return v;
+  }
+  return mrb_nil_value();
+}
+
 void
 mrb_init_core_ex_array(mrb_state * mrb)
 {
   struct RClass * a = mrb->array_class;
   mrb_define_class_method(mrb, a, "try_convert", mrb_core_ex_ary_try_convert, ARGS_REQ(1));
   mrb_define_method(mrb, a, "assoc", mrb_core_ex_ary_assoc, ARGS_REQ(1));
+  mrb_define_method(mrb, a, "rassoc", mrb_core_ex_ary_rassoc, ARGS_REQ(1));
 }

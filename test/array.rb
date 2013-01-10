@@ -13,6 +13,13 @@ assert("Array#assoc") do
   a.assoc("foo").nil?
 end
 
+assert("Array::rassoc") do
+  a = [ [ 1, "one"], [2, "two"], [3, "three"], ["ii", "two"] ]
+
+  a.rassoc("two") == [2, "two"] and
+  a.rassoc("four").nil?
+end
+
 assert("Array#reject!") do
   a = [1, 2, 3, 4]
   a.reject!{|x| x > 2 } == [1, 2] and 
