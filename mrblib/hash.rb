@@ -17,7 +17,6 @@ class Hash
   ##
   # call-seq:
   #    hsh.keep_if {| key, value | block }  -> hsh
-  #    hsh.keep_if                          -> an_enumerator
   #
   # Deletes every key-value pair from <i>hsh</i> for which <i>block</i>
   # evaluates to false.
