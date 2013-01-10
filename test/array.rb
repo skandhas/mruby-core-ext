@@ -20,6 +20,12 @@ assert("Array::rassoc") do
   a.rassoc("four").nil?
 end
 
+assert("Array#at") do
+  a = [ "a", "b", "c", "d", "e" ]
+  a.at(0)  == "a" and a.at(-1) == "e"
+end
+
+
 assert("Array#reject!") do
   a = [1, 2, 3, 4]
   a.reject!{|x| x > 2 } == [1, 2] and 

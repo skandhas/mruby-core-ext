@@ -100,6 +100,28 @@ mrb_core_ex_ary_rassoc(mrb_state *mrb, mrb_value ary)
   return mrb_nil_value();
 }
 
+/*
+ *  call-seq:
+ *     ary.at(index)   ->   obj  or nil
+ *
+ *  Returns the element at _index_. A
+ *  negative index counts from the end of +self+.  Returns +nil+
+ *  if the index is out of range. See also <code>Array#[]</code>.
+ *
+ *     a = [ "a", "b", "c", "d", "e" ]
+ *     a.at(0)     #=> "a"
+ *     a.at(-1)    #=> "e"
+ */
+
+static mrb_value
+mrb_core_ex_ary_at(mrb_state *mrb, mrb_value ary)
+{
+  mrb_value pos;
+  mrb_get_args(mrb, "i", &pos);
+
+  return mrb_ary_entry(ary, mrb_fixnum(pos));
+}
+
 void
 mrb_init_core_ex_array(mrb_state * mrb)
 {
@@ -107,4 +129,5 @@ mrb_init_core_ex_array(mrb_state * mrb)
   mrb_define_class_method(mrb, a, "try_convert", mrb_core_ex_ary_try_convert, ARGS_REQ(1));
   mrb_define_method(mrb, a, "assoc", mrb_core_ex_ary_assoc, ARGS_REQ(1));
   mrb_define_method(mrb, a, "rassoc", mrb_core_ex_ary_rassoc, ARGS_REQ(1));
+  mrb_define_method(mrb, a, "at", mrb_core_ex_ary_at, ARGS_REQ(1));
 }
