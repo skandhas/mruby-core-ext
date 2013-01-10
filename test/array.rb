@@ -16,7 +16,7 @@ end
 assert("Array#reject!") do
   a = [1, 2, 3, 4]
   a.reject!{|x| x > 2 } == [1, 2] and 
-  a.reject!{|x| x > 5 } == nil 
+  a.reject!{|x| x > 5 }.nil?
 end
 
 assert("Array#delete_if") do
@@ -27,7 +27,7 @@ end
 
 assert("Array#compact!") do
  [ "a", nil, "b", nil, "c" ].compact! == ["a", "b", "c"] and
- [ "a", "b", "c" ].compact! ==nil
+ [ "a", "b", "c" ].compact!.nil?
 end
 
 assert("Array#compact") do
@@ -38,7 +38,7 @@ end
 assert("Array#select!") do
  [ "a", "b", "c" ].select! {|e| e < "c"} == [ "a", "b" ]  and
  [ "a", "b", "c" ].select! {|e| e > "c"} == [] and 
- [ "a", "b", "c" ].select! {|e| e < "d"} == nil 
+ [ "a", "b", "c" ].select! {|e| e < "d"}.nil?
 end
 
 assert("Array#keep_if") do
