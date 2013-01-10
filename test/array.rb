@@ -20,3 +20,14 @@ assert("Array#compact") do
  [ "a", "b", "c" ].compact == [ "a", "b", "c" ] 
 end
 
+assert("Array#select!") do
+ [ "a", "b", "c" ].select! {|e| e < "c"} == [ "a", "b" ]  and
+ [ "a", "b", "c" ].select! {|e| e > "c"} == [] and 
+ [ "a", "b", "c" ].select! {|e| e < "d"} == nil 
+end
+
+assert("Array#keep_if") do
+  ["a", "b", "c"].keep_if {|e| e < "b" }  == ["a"] and
+  ["a", "b", "c"].keep_if {|e| e == "d" } == []    and
+  ["a", "b", "c"].keep_if {|e| e < "d" }  == ["a", "b", "c"]
+end

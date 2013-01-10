@@ -25,7 +25,6 @@ class Array
   ##
   # call-seq:
   #    ary.delete_if {|item| block }  -> ary
-  #    ary.delete_if                  -> an_enumerator
   #
   # Deletes every element of +self+ for which <i>block</i> evaluates
   # to true.
@@ -66,6 +65,42 @@ class Array
   def compact
     ary = self.dup
     ary.compact! || ary 
+  end
+
+  ##
+  # call-seq:
+  #    ary.select! {|item| block } -> ary or nil
+  #
+  # Invokes the block passing in successive elements from
+  # +self+, deleting elements for which the block returns a
+  # false value. It returns +self+ if changes were made,
+  # otherwise it returns <code>nil</code>.
+  # See also <code>Array#keep_if</code>
+
+  def select!
+    was = self.size
+    each_index do |idx|
+      unless yield(self[idx])
+        delete_at(idx)
+        redo if idx < self.size
+      end
+    end
+    self if was != self.size
+  end
+
+  ##
+  # call-seq:
+  #    ary.keep_if {|item| block } -> ary
+  #
+  # Deletes every element of +self+ for which <i>block</i> evaluates
+  # to false.
+  # See also <code>Array#select!</code>
+  #
+  #    a = %w{ a b c d e f }
+  #    a.keep_if {|v| v =~ /[aeiou]/}   #=> ["a", "e"]
+
+  def keep_if(&block)
+    self.select!(&block) || self
   end
 end
 
