@@ -22,10 +22,7 @@ class Hash
   # Deletes every key-value pair from <i>hsh</i> for which <i>block</i>
   # evaluates to false.
 
-  def keep_if
-    keys = []
-    self.each_key {|k| keys << k unless yield(k, self[k]) }
-    keys.each{|k| self.delete(k) }
-    self
+  def keep_if(&block)
+    self.select!(&block) || self
   end
 end
