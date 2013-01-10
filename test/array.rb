@@ -3,6 +3,16 @@ assert("Array::try_convert") do
   Array.try_convert("1").nil?
 end
 
+assert("Array#assoc") do
+  s1 = [ "colors", "red", "blue", "green" ]
+  s2 = [ "letters", "a", "b", "c" ]
+  s3 = "foo"
+  a  = [ s1, s2, s3 ]
+
+  a.assoc("letters") == [ "letters", "a", "b", "c" ] and
+  a.assoc("foo").nil?
+end
+
 assert("Array#reject!") do
   a = [1, 2, 3, 4]
   a.reject!{|x| x > 2 } == [1, 2] and 
