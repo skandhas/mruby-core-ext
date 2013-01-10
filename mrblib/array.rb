@@ -19,13 +19,7 @@ class Array
         redo if idx < self.size
       end  
     end
-   # self if was != length  
-   # mruby's bug
-    if was != length  
-      return self
-    else  
-      return nil
-    end
+    self if was != self.size
   end
 
   ##
