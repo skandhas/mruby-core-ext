@@ -4,6 +4,17 @@
 
 extern mrb_value mrb_hash_assoc(mrb_state *mrb, mrb_value hash);
 
+/*
+ *  call-seq:
+ *     Hash.try_convert(obj) -> hash or nil
+ *
+ *  Try to convert <i>obj</i> into a hash, using to_hash method.
+ *  Returns converted hash or nil if <i>obj</i> cannot be converted
+ *  for any reason.
+ *
+ *     Hash.try_convert({1=>2})   # => {1=>2}
+ *     Hash.try_convert("1=>2")   # => nil
+ */
 static mrb_value
 mrb_core_ex_hash_try_convert(mrb_state *mrb, mrb_value self)
 {
@@ -12,7 +23,6 @@ mrb_core_ex_hash_try_convert(mrb_state *mrb, mrb_value self)
   mrb_get_args(mrb, "o", &hash);
   return mrb_check_hash_type(mrb, hash);
 }
-
 
 void
 mrb_init_core_ex_hash(mrb_state * mrb)
