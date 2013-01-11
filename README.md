@@ -30,8 +30,27 @@
 
 | Methods               | Implementation |
 |:----------------------|:--------------:|
+| Hash::try_convert     |      C         |
+| Hash#assoc            |      C         |
 | Hash#delete_if        |      Ruby      |
 | Hash#keep_if          |      Ruby      |
+
+
+### String
+
+| Methods               | Implementation |
+|:----------------------|:--------------:|
+| String::try_convert   |      C         |
+
+
+### Integer
+
+| Methods               | Implementation |
+|:----------------------|:--------------:|
+| Integer#denominator   |      Ruby      |
+| Integer#integer?      |      Ruby      |
+| Integer#numerator     |      Ruby      |
+
 
 ### To be continue
 
