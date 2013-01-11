@@ -22,6 +22,6 @@ class Hash
   # evaluates to false.
 
   def keep_if(&block)
-    self.select!(&block) || self.clear 
+    self.select!(&block) || self
   end
 end

@@ -6,6 +6,7 @@ end
 
 assert("Hash#keep_if") do
   h = { "a" => 100, "b" => 200, "c" => 300 }
-  h.keep_if {|key, value| key < "b" } == { "a" => 100 } and
-  h.keep_if {|key, value| key == "d" } == {}
+  h.dup.keep_if {|key, value| key < "b" } == { "a" => 100 } and
+  h.dup.keep_if {|key, value| key == "d" } == {} and
+  h.dup.keep_if {|key, value| key < "d" } == h
 end
