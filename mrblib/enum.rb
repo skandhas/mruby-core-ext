@@ -121,4 +121,24 @@ module Enumerable
     ary
   end
 
+  ##
+  # call-seq:
+  #    enum.take_while {|arr| block }   -> array
+  #    enum.take_while                  -> an_enumerator
+  #
+  # Passes elements to the block until the block returns +nil+ or +false+,
+  # then stops iterating and returns an array of all prior elements.
+  #
+  #
+  #    a = [1, 2, 3, 4, 5, 0]
+  #    a.take_while {|i| i < 3 }   #=> [1, 2]
+
+  def take_while
+    ary = []
+    self.each do |e|
+      return ary unless yield(e)
+      ary << e
+    end
+    ary
+  end
 end
