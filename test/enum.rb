@@ -4,6 +4,11 @@ assert("Enumrable#drop") do
   a.drop(6) == [] 
 end
 
+assert("Enumrable#drop_while") do
+  a = [1, 2, 3, 4, 5, 0]
+  a.drop_while {|i| i < 3 }  == [3, 4, 5, 0]
+end
+
 assert("Enumrable#each_cons") do
   a = []
   (1..5).each_cons(3){|e| a << e}

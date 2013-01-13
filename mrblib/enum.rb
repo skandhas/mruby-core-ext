@@ -19,6 +19,26 @@ module Enumerable
 
   ##
   # call-seq:
+  #    enum.drop_while {|arr| block }   -> array
+  #
+  # Drops elements up to, but not including, the first element for
+  # which the block returns +nil+ or +false+ and returns an array
+  # containing the remaining elements.
+  #
+  #    a = [1, 2, 3, 4, 5, 0]
+  #    a.drop_while {|i| i < 3 }   #=> [3, 4, 5, 0]
+
+  def drop_while
+    ary, dropping = [], false
+    self.each do |e|
+      dropping  = true if  !dropping and !yield(e)
+      ary << e if dropping
+    end
+    ary
+  end
+
+  ##
+  # call-seq:
   #   enum.each_cons(n) {...}   ->  nil
   #
   # Iterates the given block for each array of consecutive <n>
@@ -124,7 +144,6 @@ module Enumerable
   ##
   # call-seq:
   #    enum.take_while {|arr| block }   -> array
-  #    enum.take_while                  -> an_enumerator
   #
   # Passes elements to the block until the block returns +nil+ or +false+,
   # then stops iterating and returns an array of all prior elements.
