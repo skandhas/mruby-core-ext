@@ -5,10 +5,12 @@
 | Methods               | Implementation |
 |:----------------------|:--------------:|
 | Enumerable#drop       |      Ruby      |
+| Enumerable#drop_while |      Ruby      |
 | Enumerable#each_cons  |      Ruby      |
 | Enumerable#each_slice |      Ruby      |
 | Enumerable#group_by   |      Ruby      |
 | Enumerable#take       |      Ruby      |
+| Enumerable#take_while |      Ruby      |
 
 ### Array
 
