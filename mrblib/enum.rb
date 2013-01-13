@@ -14,7 +14,9 @@ module Enumerable
     n = n.to_int
     raise ArgumentError, "attempt to drop negative size" if n < 0
 
-    self[n, self.size] 
+    ary = []
+    self.each {|e| n == 0 ? ary << e : n -= 1 }
+    ary
   end
 
   ##
@@ -31,7 +33,7 @@ module Enumerable
   def drop_while
     ary, dropping = [], false
     self.each do |e|
-      dropping  = true if  !dropping and !yield(e)
+      dropping = true if !dropping and !yield(e)
       ary << e if dropping
     end
     ary
