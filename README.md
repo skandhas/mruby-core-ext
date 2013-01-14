@@ -36,6 +36,7 @@
 | Hash#assoc            |      C         |
 | Hash#delete_if        |      Ruby      |
 | Hash#keep_if          |      Ruby      |
+| Hash#invert           |      Ruby      |
 
 
 ### String
