@@ -28,3 +28,8 @@ assert("Hash#keep_if") do
   h.dup.keep_if {|key, value| key == "d" } == {} and
   h.dup.keep_if {|key, value| key < "d" } == h
 end
+
+assert("Hash#invert") do
+  h = { "n" => 100, "y" => 300, "d" => 200, "a" => 0 }
+  h.invert == {0=>"a", 100=>"n", 200=>"d", 300=>"y"}
+end

@@ -24,4 +24,20 @@ class Hash
   def keep_if(&block)
     self.select!(&block) || self
   end
+
+  ##
+  # call-seq:
+  #    hsh.invert -> new_hash
+  #
+  # Returns a new hash created by using <i>hsh</i>'s values as keys, and
+  # the keys as values.
+  #
+  #    h = { "n" => 100, "y" => 300, "d" => 200, "a" => 0 }
+  #    h.invert   #=> {0=>"a", 100=>"n", 200=>"d", 300=>"y"}
+
+  def invert
+    h = {}
+    self.each { |k, v| h[v] = k }
+    h
+  end
 end
