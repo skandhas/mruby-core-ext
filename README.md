@@ -27,7 +27,6 @@
 | Array#select!         |      Ruby      |
 | Array#keep_if         |      Ruby      |
 
-
 ### Hash
 
 | Methods               | Implementation |
@@ -38,13 +37,22 @@
 | Hash#keep_if          |      Ruby      |
 | Hash#invert           |      Ruby      |
 
-
 ### String
 
 | Methods               | Implementation |
 |:----------------------|:--------------:|
 | String::try_convert   |      C         |
 
+### Symbol
+
+| Methods               | Implementation |
+|:----------------------|:--------------:|
+| Symbol#length         |      Ruby      |
+| Symbol#size           |      Ruby      |
+| Symbol#capitalize     |      Ruby      |
+| Symbol#downcase       |      Ruby      |
+| Symbol#upcase         |      Ruby      |
+| Symbol#empty?         |      Ruby      |
 
 ### Integer
 
