@@ -10,4 +10,8 @@ assert("Symbol#downcase") do
   :hEllO.downcase == :hello
 end
 
+assert("Symbol#upcase") do
+  :hEllO.upcase == :HELLO
+end
+
 

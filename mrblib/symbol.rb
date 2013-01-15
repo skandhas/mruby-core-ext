@@ -29,4 +29,14 @@ class Symbol
   def downcase
     self.to_s.downcase.intern
   end
+
+  ##
+  # call-seq:
+  #   sym.upcase    -> symbol
+  #
+  # Same as <code>sym.to_s.upcase.intern</code>.
+
+  def upcase
+    self.to_s.upcase.intern
+  end
 end
