@@ -19,4 +19,14 @@ class Symbol
   def capitalize
     self.to_s.capitalize.intern
   end
+
+  ##
+  # call-seq:
+  #   sym.downcase  -> symbol
+  #
+  # Same as <code>sym.to_s.downcase.intern</code>.
+
+  def downcase
+    self.to_s.downcase.intern
+  end
 end

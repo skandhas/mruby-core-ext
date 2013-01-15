@@ -6,4 +6,8 @@ assert("Symbol#capitalize") do
   :hello.capitalize == :Hello and :HELLO.capitalize == :Hello
 end
 
+assert("Symbol#downcase") do
+  :hEllO.downcase == :hello
+end
+
 
