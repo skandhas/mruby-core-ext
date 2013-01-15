@@ -39,4 +39,14 @@ class Symbol
   def upcase
     self.to_s.upcase.intern
   end
+
+  #
+  # call-seq:
+  #   sym.empty?   -> true or false
+  #
+  # Returns that _sym_ is :"" or not.
+
+  def empty?
+    self.to_s.empty?
+  end
 end

@@ -14,4 +14,9 @@ assert("Symbol#upcase") do
   :hEllO.upcase == :HELLO
 end
 
+assert("Symbol#empty?") do
+  :"".empty? and not :mruby.empty?
+end
+
+
 
